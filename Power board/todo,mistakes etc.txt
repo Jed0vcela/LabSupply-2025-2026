@@ -1,0 +1,9 @@
+DAC needs 5V to use full scane on gain 2 (0.000-4.096V)
+for DAC 5V supply, level shift is needed on I2C, 10K pull up is good up to 400khz
+RS232 peripherial? protection needed
+DCDC converter cap size and capacity
+inductor select
+capacitors for opamps supply
+low noise supply for opamps and analog parts
+buy USB-C negotiation boards?
+
