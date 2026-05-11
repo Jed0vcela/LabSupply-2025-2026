@@ -1,0 +1,35 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeASMInformation.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeCInformation.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeCXXInformation.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeGenericSystem.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/Compiler/GNU-ASM.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/Compiler/GNU.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/Compiler/MSVC.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk-tools/pico-sdk-tools-config-version.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk-tools/pico-sdk-tools-config.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/Platform/PICO.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/pico_pre_load_platform.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/pico_pre_load_toolchain.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/pico_utils.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/preload/platforms/pico/pico.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/preload/platforms/rp2040.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/preload/toolchains/find_compiler.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/preload/toolchains/pico_arm_gcc.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/cmake/preload/toolchains/set_flags.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/external/pico_sdk_import.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/pico_sdk_init.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/pico_sdk_version.cmake
+C:/Users/Kaso/Documents/PlatformIO/Projects/LabSupply/CMakeLists.txt
+C:/Users/Kaso/Documents/PlatformIO/Projects/LabSupply/build/CMakeFiles/3.25.2/CMakeASMCompiler.cmake
+C:/Users/Kaso/Documents/PlatformIO/Projects/LabSupply/build/CMakeFiles/3.25.2/CMakeCCompiler.cmake
+C:/Users/Kaso/Documents/PlatformIO/Projects/LabSupply/build/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake
+C:/Users/Kaso/Documents/PlatformIO/Projects/LabSupply/build/CMakeFiles/3.25.2/CMakeSystem.cmake

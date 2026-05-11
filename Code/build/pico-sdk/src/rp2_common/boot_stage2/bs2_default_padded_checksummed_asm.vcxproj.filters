@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Kaso\Documents\PlatformIO\Projects\LabSupply\build\CMakeFiles\91aa485c732f33f5e21d2536831127d1\bs2_default.bin.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Kaso\Documents\PlatformIO\Projects\LabSupply\build\CMakeFiles\91aa485c732f33f5e21d2536831127d1\bs2_default_padded_checksummed.S.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Kaso\Documents\PlatformIO\Projects\LabSupply\build\CMakeFiles\a31ed587d93cae11bff123bd632a7803\bs2_default_padded_checksummed_asm.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Program Files\Raspberry Pi\Pico SDK v1.5.1\pico-sdk\src\rp2_common\boot_stage2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Kaso\Documents\PlatformIO\Projects\LabSupply\build\pico-sdk\src\rp2_common\boot_stage2\CMakeFiles\bs2_default_padded_checksummed_asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{778BDABF-1289-3121-8B1C-BF463B806D58}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

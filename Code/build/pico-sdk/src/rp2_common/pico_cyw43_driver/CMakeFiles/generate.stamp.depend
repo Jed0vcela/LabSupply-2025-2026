@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk-tools/pico-sdk-tools-config-version.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk-tools/pico-sdk-tools-config.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeLists.txt

@@ -1,0 +1,12 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+"28V1, 35V1, GND1",TestPoint_Pad_D2.0mm,3,TestPoint_Probe,
+"C1, C61",CP_Elec_10x10,2,220u 50V,
+"C44, C58",1206,2,1u,
+C45,0805,1,200p,
+D12,D_SMA,1,D_Schottky,
+L4,L_Bourns-SRU1028_10.0x10.0mm,1,220u,
+R1,0805,1,180,
+R44,0805,1,1,
+R51,0805,1,27k,
+R52,0805,1,1k,
+U12,SOIC-8_3.9x4.9mm_P1.27mm,1,MC34063AD,

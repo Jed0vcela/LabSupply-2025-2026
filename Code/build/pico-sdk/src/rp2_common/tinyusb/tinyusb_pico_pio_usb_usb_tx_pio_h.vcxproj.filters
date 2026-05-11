@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Kaso\Documents\PlatformIO\Projects\LabSupply\build\CMakeFiles\f45aebfb80593e33ec700ee468a9fccf\usb_tx.pio.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Kaso\Documents\PlatformIO\Projects\LabSupply\build\CMakeFiles\00905be0256a6a6e2bbdbc1acd9175c0\tinyusb_pico_pio_usb_usb_tx_pio_h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Program Files\Raspberry Pi\Pico SDK v1.5.1\pico-sdk\src\rp2_common\tinyusb\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Kaso\Documents\PlatformIO\Projects\LabSupply\build\pico-sdk\src\rp2_common\tinyusb\CMakeFiles\tinyusb_pico_pio_usb_usb_tx_pio_h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{778BDABF-1289-3121-8B1C-BF463B806D58}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

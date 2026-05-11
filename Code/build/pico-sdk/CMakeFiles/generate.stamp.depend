@@ -1,0 +1,8 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/CMakeASMInformation.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/Compiler/GNU-ASM.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/cmake/share/cmake-3.25/Modules/Compiler/GNU.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/CMakeLists.txt
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/pico_sdk_init.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/src/common/pico_base/generate_config_header.cmake
+C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/src/common/pico_base/include/pico/version.h.in

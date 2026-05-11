@@ -1,0 +1,26 @@
+TL431 SEPIC converter
+soft start
+inverted gate drive logic
+
+
+DAC
+internal VREF and gain set to 2 (max 4.096V) to minimize zero offset - need to change feedback dividers to not increase output voltage too much to destroy HW
+15k pulldown to -3v3 doesnt lower 10mV zero offset for some reason (should be about 2mV max from datasheet) (on voltage output - outC)
+
+jumper JP2 solder to select gnd - short position 1 and 2. otherwise feedback loop wont work properly.
+jumper JP1 solder if soft start on input isnt used.
+
+Place fuse on output - for discharging and charging batteries essential.
+
+For future version shottky diode supply ORing? and vsense for all supplies?
+
+Boost converter for U10 opamp
+
+
+there is low impedance path output of opamp istead of negative feedback on U9. lift pin 7 and short pin 5 and 6 together.
+
+filtering after dc-dc converter stage?
+
+filters on ADC inputs?
+
+output BJT has too much voltage when oparating, fix.

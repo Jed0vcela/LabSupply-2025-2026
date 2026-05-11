@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Kaso\Documents\PlatformIO\Projects\LabSupply\build\CMakeFiles\61a51e33d7111d4cbed3363c2925f1fc\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{778BDABF-1289-3121-8B1C-BF463B806D58}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
