@@ -34,4 +34,8 @@ Raspberry Pi Pico (RP2040) · MCP4728 DAC · MCP23S17 · ST7735S LCD · rotačn�
 
 Podrobný uživatelský manuál: [`manual_napajeci_zdroj.md`](manual_napajeci_zdroj.md)
 
+<img width="4624" height="3472" alt="IMG_20260608_140253" src="https://github.com/user-attachments/assets/2df4201b-ee5e-44f5-9043-8d2f1a5b26d9" />
+
+<img width="3472" height="4624" alt="IMG_20260608_140136" src="https://github.com/user-attachments/assets/06a2c057-860f-4f5b-88a8-9de93c431756" />
+
 <img width="1724" height="938" alt="LabSupply 2025-2026" src="https://github.com/user-attachments/assets/e68a7a44-ff1c-4edc-9360-bf4c87f79170" />
