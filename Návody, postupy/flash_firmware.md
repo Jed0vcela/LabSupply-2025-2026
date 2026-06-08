@@ -4,7 +4,7 @@
 
 - Micro USB kabel
 - PC (Windows, macOS nebo Linux)
-- Soubor `firmware.uf2` — stáhnout z [GitHub Releases](../../releases/latest)
+- Soubor `firmware.uf2` — stáhnout z [GitHub Releases](../../Kompilované programy)
 
 ---
 
