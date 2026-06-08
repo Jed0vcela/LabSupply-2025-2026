@@ -17,6 +17,7 @@
 **3.** Stiskněte a **držte** tlačítko **BOOTSEL** na Raspberry Pi Pico.
 
 <!-- přidám obrázek -->
+<img width="4624" height="3472" alt="bootsel" src="https://github.com/user-attachments/assets/ee42809b-4db2-4139-b413-34fd37f7e3f6" />
 
 **4.** Při stále stisknutém tlačítku připojte micro USB kabel do PC.  
 Zdroj se zobrazí jako USB flash disk (mass storage) s názvem `RPI-RP2`.
@@ -28,6 +29,7 @@ Zdroj se zobrazí jako USB flash disk (mass storage) s názvem `RPI-RP2`.
 **7.** Přetáhněte soubor `firmware.uf2` na disk `RPI-RP2`.
 
 <!-- přidám obrázek -->
+<img width="893" height="654" alt="nahrání fw" src="https://github.com/user-attachments/assets/9c8cfaa1-76ea-4031-8ef3-0c906ef1ad10" />
 
 **8.** Zařízení se automaticky odpojí od PC, resetuje a spustí nový firmware.
 
