@@ -23,7 +23,7 @@ Kombinovaný zdroj a elektronická zátěž na společných výstupních svorká
 - **Ochrana výkonu** — konfigurovatelné limity Pout a Psink, ochrana při poklesu Vin
 - **Kalibrace** — nastavení gain/offset pro každý měřený kanál, uložení do interní flash
 - **Ukládání nastavení** — hodnoty Vset, Iset a Isink se ukládají do flash
-- **IR dálkové ovládání** — NEC protokol, konfigurovatelné příkazy
+- **IR dálkové ovládání** — NEC protokol, zatím není implementováno
 - **LCD displej** — barevný 160×128 px, tři zobrazovací režimy
 
 ## Hardware
