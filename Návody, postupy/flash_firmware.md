@@ -4,7 +4,7 @@
 
 - Micro USB kabel
 - PC (Windows, macOS nebo Linux)
-- Soubor `firmware.uf2` — stáhnout z [GitHub Releases](../../Kompilované programy)
+- Soubor `firmware.uf2` — stáhnout z [GitHub – Zkompilované programy](https://github.com/Jed0vcela/LabSupply-2025-2026/tree/main/Kompilovan%C3%A9%20programy)
 
 ---
 
@@ -23,7 +23,7 @@ Zdroj se zobrazí jako USB flash disk (mass storage) s názvem `RPI-RP2`.
 
 **5.** Tlačítko BOOTSEL uvolněte.
 
-**6.** Stáhněte nejnovější `firmware.uf2` z [GitHub Releases](../../releases/latest).
+**6.** Stáhněte nejnovější `firmware.uf2` z [GitHub – Zkompilované programy](https://github.com/Jed0vcela/LabSupply-2025-2026/tree/main/Kompilovan%C3%A9%20programy).
 
 **7.** Přetáhněte soubor `firmware.uf2` na disk `RPI-RP2`.
 
