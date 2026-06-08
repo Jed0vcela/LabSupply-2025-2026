@@ -17,6 +17,10 @@ add_executable(lab_supply
     mcp4728.cpp
     ADC_measurement.c
 )
+target_sources(lab_supply PRIVATE
+    main.cpp display.cpp psu_control.cpp
+    peripherals.cpp cal_menu.cpp flash_store.cpp
+)
 
 target_include_directories(lab_supply PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -30,8 +34,10 @@ target_link_libraries(lab_supply PRIVATE
     hardware_gpio
     hardware_irq
     hardware_adc
-    hardware_sync
+    hardware_sync     # save_and_disable_interrupts
     hardware_clocks
+    hardware_timer
+    hardware_flash    # flash_range_erase / flash_range_program
     m                 # libm for logf() in NTC temperature
 )
 
