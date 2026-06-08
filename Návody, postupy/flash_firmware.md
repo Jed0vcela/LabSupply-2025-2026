@@ -46,8 +46,8 @@ Hodnoty uložené v paměti FLASH (kalibrace, nastavení) **přežijí nahrání
 **2.** Nahrajte `flash_nuke.uf2` stejným postupem jako firmware výše.  
    Zařízení se po nahrání samo resetuje — disk `RPI-RP2` zmizí.
 
-**3.** Odpojte USB kabel.
+**3.** Po pár sekundách se raspberry znova připojí.
 
-**4.** Opakujte celý postup nahrání firmwaru s `firmware.uf2`.
+**4.** Nahrajte "čistý" firmware dle postupu víše.
 
 > Po vymazání flash se při prvním spuštění načtou **tovární výchozí hodnoty** kalibrace.
