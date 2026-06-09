@@ -35,7 +35,7 @@ Zdroj se zobrazí jako USB flash disk (mass storage) s názvem `RPI-RP2`.
 
 ---
 
-## Vymazání paměti flash (reset kalibrace)
+## Vymazání paměti flash (reset kalibrace) (není normálně potřeba)
 
 Hodnoty uložené v paměti FLASH (kalibrace, nastavení) **přežijí nahrání nového firmwaru**. Pokud jste v kalibračním menu uložili nesmyslné hodnoty a zdroj se chová nesprávně, je nutné paměť zcela vymazat.
 
