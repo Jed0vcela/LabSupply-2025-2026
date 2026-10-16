@@ -25,9 +25,9 @@
 | MCP4728 DAC | 4kanálový D/A převodník, nastavení výstupů |
 | MCP23S17 expandér | Vstupní tlačítka a indikační LED |
 | Rotační enkodér | Nastavení hodnot, tlačítko = potvrzení |
-| IR přijímač (GP1) | Ovládání dálkovým ovladačem |
-| Ventilátor (GP22) | Chlazení, řízeno teplotou |
-| Bzučák (GP14) | Akustická signalizace |
+| IR přijímač | Ovládání dálkovým ovladačem |
+| Ventilátor | Chlazení, řízeno teplotou |
+| Bzučák | Akustická signalizace |
 
 ---
 
@@ -38,24 +38,23 @@
 | Akce | Funkce |
 |---|---|
 | Otočení | Změna vybrané hodnoty (dle kroku) |
-| Stisk (GPA1) | Potvrzení / přepnutí sloupce v menu |
+| Stisk | Potvrzení / přepnutí sloupce v menu |
 
-### Tlačítka na expandéru MCP23S17
+### Tlačítka na předním panelu
 
 | Tlačítko | Funkce |
 |---|---|
-| **GPA0** | Zapnutí/vypnutí výstupu Source (Vset + Iset) |
-| **GPA1** | Tlačítko enkodéru — potvrzení v menu |
-| **GPB0** | Výběr kanálu **Vset** |
-| **GPB1** | Krok enkodéru ×100 (momentary) nebo reset na ×1 (toggle) |
-| **GPB2** | Výběr kanálu **Iset** |
-| **GPB3** | Krok enkodéru ×10 (momentary) nebo cyklus ×1→×10→×100 (toggle) |
-| **GPB4** | Výběr kanálu **Isink** |
-| **GPB5** | Vstup do kalibračního menu / Výstup z menu |
-| **GPB6** | Zapnutí/vypnutí výstupu Sink (Isink) |
-| **GPB7** | Přepnutí režimu zobrazení (Supply+Sink → Supply → Continuity) |
+| **OUT** | Zapnutí/vypnutí výstupu Source (Vset + Iset) |
+| **tlačítko enkodéru** | Potvrzení v menu |
+| **VOUT** | Výběr kanálu **Vset** |
+| **100x** | Krok enkodéru ×100 (momentary) nebo reset na ×1 (toggle) |
+| **IOUT** | Výběr kanálu **Iset** |
+| **10x** | Krok enkodéru ×10 (momentary) nebo cyklus ×1→×10→×100 (toggle) |
+| **ISINK** | Výběr kanálu **Isink** |
+| **MENU** | Vstup do kalibračního menu / výstup z menu |
+| **SINK** | Zapnutí/vypnutí výstupu Sink (Isink) |
+| **MODE** | Přepnutí režimu zobrazení (Supply+Sink → Supply → Continuity) |
 
-> **Poznámka:** Tlačítka jsou aktivní v logické nule (active-low). Interní pull-up rezistory jsou zapnuty.
 
 ---
 
@@ -152,7 +151,7 @@ Výběr editovaného parametru:
 
 ---
 
-Super na testování součástek / jestli kabel není přerušený atd... Pro pořádný test je možné narozdíl od multimetru měřeným spojem prohnat i několik A. Možné použít i pro měření diod a tranzistorů.
+Režim je vhodný pro testování součástek a kontrolu, zda kabel není přerušený. Na rozdíl od multimetru lze měřeným spojem prohnat i několik ampér, takže jde o poctivý test spoje. Lze jej použít i pro zkoušení diod a tranzistorů.
 
 ## 5. Ovládání výstupu
 
@@ -181,9 +180,9 @@ Krok platí po dobu, kdy je tlačítko fyzicky stisknuto:
 | Stav tlačítek | Krok |
 |---|---|
 | Žádné | ×1 |
-| GPB3 držen | ×10 |
-| GPB1 držen | ×100 |
-| GPB1 + GPB3 oba drženy | ×1000 |
+| **10x** držen | ×10 |
+| **100x** držen | ×100 |
+| **100x** + **10x** oba drženy | ×1000 |
 
 ### Režim Toggle
 
@@ -191,11 +190,11 @@ Každý stisk tlačítka přepne krok a ten zůstane aktivní i po uvolnění:
 
 | Akce | Výsledek |
 |---|---|
-| Stisk GPB3 | Cyklus: ×1 → ×10 → ×100 → ×1 |
-| Stisk GPB1 | Reset na ×1 |
+| Stisk **10x** | Cyklus: ×1 → ×10 → ×100 → ×1 |
+| Stisk **100x** | Reset na ×1 |
 
 Přepínání mezi režimy se provádí v **kalibračním menu** (položka `Step mode`).
-V budouucnu asi bude změněno.
+V budoucnu se to může změnit.
 
 ---
 
@@ -205,7 +204,7 @@ V budouucnu asi bude změněno.
 
 - **MENU** — vstup do menu
 - **MENU** znovu (uvolnit a znovu stisknout) — výstup **bez uložení**
-- **tlačítko enkodéru** na položce `Exit` — výstup bez uložení
+- **tlačítko enkodéru** na položce `Exit` — výstup bez uložení (změny provedené v menu se zahodí a platí dřívější hodnoty)
 - **tlačítko enkodéru** na položce `Save+Exit` — uložení do paměti flash a výstup z menu
 
 ### Navigace
@@ -213,9 +212,9 @@ V budouucnu asi bude změněno.
 | Akce | Funkce |
 |---|---|
 | Otočení enkodéru (levý sloupec) | Pohyb po položkách menu |
-| GPA1 | Přepnutí do pravého sloupce (editace hodnoty) |
+| tlačítko enkodéru | Přepnutí do pravého sloupce (editace hodnoty) |
 | Otočení enkodéru (pravý sloupec) | Změna hodnoty |
-| GPA1 (v pravém sloupci) | Potvrzení a návrat do levého sloupce |
+| tlačítko enkodéru (v pravém sloupci) | Potvrzení a návrat do levého sloupce |
 
 Menu má tři sloupce:
 - **Název** — popis parametru
@@ -228,6 +227,7 @@ Menu má tři sloupce:
 |---|---|---|
 | Exit | Výstup bez uložení | — |
 | Save+Exit | Uložení do flash a výstup | — |
+| **Auto cal** | Spustí kalibračního průvodce (viz níže) | — |
 | **Plim on** | Povolení omezení výkonu | on / off |
 | **Pout max W** | Maximální výstupní výkon | 0–200 W |
 | **Psink max W** | Maximální výkon sinku | 0–200 W |
@@ -235,19 +235,19 @@ Menu má tři sloupce:
 | **Beep** | Režim bzučáku | ALL / ALARM / MUTE |
 | **Backlight** | Jas podsvícení | 1–100 % |
 | **Step mode** | Režim tlačítek kroku | moment / toggle |
-| Vout gain | Zisk pro měření výstupního napětí | 1–99999 |
+| Vout gain | Zisk pro měření výstupního napětí | 1–999999 |
 | Vout offset | Offset pro měření výstupního napětí (mV) | ±9999 |
-| Vin gain | Zisk pro měření vstupního napětí | 1–99999 |
+| Vin gain | Zisk pro měření vstupního napětí | 1–999999 |
 | Vin offset | Offset pro měření vstupního napětí (mV) | ±9999 |
-| HiI gain | Zisk pro měření proudu sinku | 1–99999 |
+| HiI gain | Zisk pro měření proudu sinku | 1–999999 |
 | HiI offset | Offset pro měření proudu sinku (mA) | ±9999 |
-| Iout gain | Zisk pro měření výstupního proudu | 1–99999 |
+| Iout gain | Zisk pro měření výstupního proudu | 1–999999 |
 | Iout offset | Offset pro měření výstupního proudu (mA) | ±9999 |
-| Vset gain | Zisk pro zobrazení nastavení napětí | 1–99999 |
+| Vset gain | Zisk pro zobrazení nastavení napětí | 1–999999 |
 | Vset offset | Offset pro zobrazení nastavení napětí (mV) | ±9999 |
-| Iset gain | Zisk pro zobrazení nastavení proudu | 1–99999 |
+| Iset gain | Zisk pro zobrazení nastavení proudu | 1–999999 |
 | Iset offset | Offset pro zobrazení nastavení proudu (mA) | ±9999 |
-| Isink gain | Zisk pro zobrazení nastavení sinku | 1–99999 |
+| Isink gain | Zisk pro zobrazení nastavení sinku | 1–999999 |
 | Isink offset | Offset pro zobrazení nastavení sinku (mA) | ±9999 |
 
 ### Nastavení bzučáku
@@ -258,7 +258,15 @@ Menu má tři sloupce:
 | ALARM | Pouze alarmové události (omezení výkonu, continuity) |
 | MUTE | Tichý provoz (bzučák zcela vypnut) |
 
-### Kalibrace měření (Gain a Offset)
+### Auto cal — kalibrační průvodce (doporučeno)
+
+Položka `Auto cal` provede kalibraci krok za krokem: zdroj sám říká, na jaký rozsah přepnout multimetr a jakou hodnotu má ukázat. Zkalibruje se současně nastavení (Vset, Iset) i měření (Vout, Iout), volitelně i vstupní napětí Vin.
+
+**Před spuštěním je nutný dostatečně silný napájecí zdroj (doporučeno ≥ 60 W).** Kompletní postup, rozsahy multimetru, bezpečnostní opatření a ruční kalibraci Isink najdete v [kalibrace.md](kalibrace.md).
+
+### Ruční kalibrace (Gain a Offset) — pokročilé
+
+Průvodce nahrazuje ruční ladění v naprosté většině případů. Ruční úpravu hodnot použijte jen tehdy, když potřebujete jednotlivou hodnotu doladit (například Isink).
 
 Měřená hodnota se počítá takto:
 
@@ -266,12 +274,14 @@ Měřená hodnota se počítá takto:
 zobrazená_hodnota = (raw_mV × gain / divisor) − offset
 ```
 
+Od tohoto firmwaru je `divisor` (`div`) **10000** (dříve 1000), tedy `gain` je desetkrát větší pro stejné měřítko; například `gain = 110880` odpovídá zisku 11,088. Menu proto umožňuje zadat gain až do 999999. Průvodce vždy ukládá `div = 10000`; dříve uložené hodnoty s `div = 1000` zůstávají platné.
+
 **Postup kalibrace výstupního napětí (Vout):**
 
 1. Přiložte kalibrovaný voltmetr na výstupní svorky.
-2. Zapněte Source (GPA0), nastavte nenulové Vset.
+2. Zapněte Source (**OUT**), nastavte nenulové Vset.
 3. Porovnejte zobrazení Vout na displeji s voltmetrem.
-4. Vstupte do kalibračního menu (GPB5).
+4. Vstupte do kalibračního menu (**MENU**).
 5. Upravte `Vout gain` a `Vout offset` dokud se hodnoty neshodují.
 6. Stejný postup pro ostatní měřené veličiny (Vin, HiI, Iout).
 7. Uložte: `Save+Exit`.
@@ -302,7 +312,7 @@ Pokud `Vin < Vin min` (a hodnota je nenulová), dochází k automatickému sniž
 
 Zobrazení: červená zpráva `ERR: Vin too low - reducing Vset`.
 
-> **Poznámka:** Omezení výkonu jsou gradientní (plynulé snižování) — výstup **není okamžitě vypnut**. Pokud je potřeba okamžité vypnutí, použijte tlačítko GPA0.
+> **Poznámka:** Omezení výkonu jsou gradientní (plynulé snižování) — výstup **není okamžitě vypnut**. Pokud je potřeba okamžité vypnutí, použijte tlačítko **OUT**.
 
 ---
 
@@ -328,7 +338,8 @@ Příkazy jsou definovány v souboru `peripherals.h` jako konstanty:
 
 `0xFF` znamená deaktivovaný příkaz.
 
-Zatím není implementováno řizení zdroje přes IR, zatím je to pouze test.
+Ovládání zdroje přes IR zatím není implementováno, jde pouze o test příjmu.
+
 ---
 
 ## Rychlá reference — nejčastější úkony
@@ -343,5 +354,6 @@ Zatím není implementováno řizení zdroje přes IR, zatím je to pouze test.
 | Změnit krok ×10 (toggle) | Stisknout **10X** jednou |
 | Přepnout režim | MODE |
 | Vstoupit do kalibrace | MENU |
+| Spustit kalibračního průvodce | MENU → položka `Auto cal` → tlačítko enkodéru |
 | Uložit kalibraci | MENU → navigovat na `Save+Exit` → Tlačítko enkodéru |
 | Opustit kalibraci bez uložení | MENU (znovu stisknout) |

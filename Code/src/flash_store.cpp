@@ -1,5 +1,5 @@
 #include "flash_store.h"
-#include "adc_measurement.h"
+#include "ADC_measurement.h"
 #include <string.h>
 #include "hardware/flash.h"
 #include "hardware/sync.h"
@@ -19,13 +19,13 @@ static uint32_t crc32(const uint8_t *d, size_t len)
 /* ── Defaults ─────────────────────────────────────────────────────────── */
 const cal_flash_t CAL_DEFAULTS = {
     CAL_MAGIC,
-    /* vout */ 11088, 1000, 175,
-    /* vin  */ 1095,  1000, 0,
-    /* hii  */ 1861, 1000, 15,
-    /* iout */ 2119,  1000, 17,
-    /* vset */ 16400,  1000, 0,
-    /* iset */ 2180,  1000, 0,
-    /* isink*/ 1868,  1000, 0,
+    /* vout */ 110880, 10000, 175,
+    /* vin  */ 10950, 10000, 0,    /* Vin is calibrated in units of 10 mV */
+    /* hii  */ 18610, 10000, 15,
+    /* iout */ 21190, 10000, 17,
+    /* vset */ 164000, 10000, 0,
+    /* iset */ 21800, 10000, 0,
+    /* isink*/ 18680, 10000, 0,
     /* dac  */ {0, 0, 0, 0},
     /* cont */ {0, 0, 200},
     /* pout_max_mW  */ 50000,

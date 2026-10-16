@@ -1,4 +1,5 @@
 #include "cal_menu.h"
+#include "cal_wizard.h"
 #include "display.h"
 #include "peripherals.h"
 #include "psu_control.h"
@@ -9,6 +10,8 @@
 #include "pico/stdlib.h"
 
 /* ── Cal item table ───────────────────────────────────────────────────── */
+typedef enum { ACT_EXIT = 0, ACT_SAVE_EXIT, ACT_AUTO_CAL } cal_act_t;
+
 typedef enum { CI_ACT, CI_INT, CI_BEEP, CI_BL, CI_BOOL, CI_WATTS, CI_STEPMODE } cal_item_type_t;
 
 typedef struct {
@@ -55,8 +58,10 @@ static void cal_menu_build(void)
     cal_cal_to_i32();
     g_cal_item_count = 0;
     /* ── Actions ─────────────────────────────────────────── */
-    cal_add("Exit",         CI_ACT,      NULL,                0, 0, 0,  0);
-    cal_add("Save+Exit",    CI_ACT,      NULL,                0, 0, 0,  0);
+    /* For CI_ACT items def_val holds the cal_act_t action id */
+    cal_add("Exit",         CI_ACT,      NULL,                0, 0, 0,  ACT_EXIT);
+    cal_add("Save+Exit",    CI_ACT,      NULL,                0, 0, 0,  ACT_SAVE_EXIT);
+    cal_add("Auto cal",     CI_ACT,      NULL,                0, 0, 0,  ACT_AUTO_CAL);
     /* ── Power limiting ──────────────────────────────────── */
     cal_add("Plim on",      CI_BOOL,     &g_cal_plim_i32,     1, 0, 1,  (int32_t)CAL_DEFAULTS.plim_enabled);
     cal_add("Pout max W",   CI_WATTS,    &g_cal.pout_max_mW,  1, 0, 200, CAL_DEFAULTS.pout_max_mW/1000);
@@ -67,20 +72,20 @@ static void cal_menu_build(void)
     cal_add("Backlight",    CI_BL,       &g_cal_bl_i32,       1, 1, 100,(int32_t)CAL_DEFAULTS.backlight);
     cal_add("Step mode",    CI_STEPMODE, &g_cal_stepmode_i32, 1, 0, 1,  (int32_t)CAL_DEFAULTS.step_mode);
     /* ── ADC calibration ─────────────────────────────────── */
-    cal_add("Vout gain",    CI_INT, &g_cal.vout_gain,    1, 1,    99999, CAL_DEFAULTS.vout_gain);
+    cal_add("Vout gain",    CI_INT, &g_cal.vout_gain,    1, 1,    999999, CAL_DEFAULTS.vout_gain);
     cal_add("Vout offset",  CI_INT, &g_cal.vout_off,     1, -9999,9999,  CAL_DEFAULTS.vout_off);
-    cal_add("Vin gain",     CI_INT, &g_cal.vin_gain,     1, 1,    99999, CAL_DEFAULTS.vin_gain);
+    cal_add("Vin gain",     CI_INT, &g_cal.vin_gain,     1, 1,    999999, CAL_DEFAULTS.vin_gain);
     cal_add("Vin offset",   CI_INT, &g_cal.vin_off,      1, -9999,9999,  CAL_DEFAULTS.vin_off);
-    cal_add("HiI gain",     CI_INT, &g_cal.hii_gain,     1, 1,    99999, CAL_DEFAULTS.hii_gain);
+    cal_add("HiI gain",     CI_INT, &g_cal.hii_gain,     1, 1,    999999, CAL_DEFAULTS.hii_gain);
     cal_add("HiI offset",   CI_INT, &g_cal.hii_off,      1, -9999,9999,  CAL_DEFAULTS.hii_off);
-    cal_add("Iout gain",    CI_INT, &g_cal.iout_gain,    1, 1,    99999, CAL_DEFAULTS.iout_gain);
+    cal_add("Iout gain",    CI_INT, &g_cal.iout_gain,    1, 1,    999999, CAL_DEFAULTS.iout_gain);
     cal_add("Iout offset",  CI_INT, &g_cal.iout_off,     1, -9999,9999,  CAL_DEFAULTS.iout_off);
     /* ── Setpoint display calibration ────────────────────── */
-    cal_add("Vset gain",    CI_INT, &g_cal.vset_gain,    1, 1,    99999, CAL_DEFAULTS.vset_gain);
+    cal_add("Vset gain",    CI_INT, &g_cal.vset_gain,    1, 1,    999999, CAL_DEFAULTS.vset_gain);
     cal_add("Vset offset",  CI_INT, &g_cal.vset_off,     1, -9999,9999,  CAL_DEFAULTS.vset_off);
-    cal_add("Iset gain",    CI_INT, &g_cal.iset_gain,    1, 1,    99999, CAL_DEFAULTS.iset_gain);
+    cal_add("Iset gain",    CI_INT, &g_cal.iset_gain,    1, 1,    999999, CAL_DEFAULTS.iset_gain);
     cal_add("Iset offset",  CI_INT, &g_cal.iset_off,     1, -9999,9999,  CAL_DEFAULTS.iset_off);
-    cal_add("Isink gain",   CI_INT, &g_cal.isink_gain,   1, 1,    99999, CAL_DEFAULTS.isink_gain);
+    cal_add("Isink gain",   CI_INT, &g_cal.isink_gain,   1, 1,    999999, CAL_DEFAULTS.isink_gain);
     cal_add("Isink offset", CI_INT, &g_cal.isink_off,    1, -9999,9999,  CAL_DEFAULTS.isink_off);
 }
 
@@ -173,8 +178,16 @@ static void cal_draw_full(uint8_t scroll, uint8_t sel, bool in_right)
 }
 
 /* ── Menu run ─────────────────────────────────────────────────────────── */
-bool cal_menu_run(draw_static_fn_t redraw_fn)
+bool cal_menu_run(mcp4728 &dac, draw_static_fn_t redraw_fn)
 {
+    /* Exit without saving must discard edits, which are made live in g_cal */
+    const cal_flash_t cal_backup = g_cal;
+    auto discard_changes = [&]() {
+        g_cal = cal_backup;
+        cal_apply();
+        backlight_set(g_cal.backlight);
+    };
+
     cal_menu_build();
     uint8_t scroll = 0, sel = 0;
     bool in_right = false;
@@ -210,15 +223,19 @@ bool cal_menu_run(draw_static_fn_t redraw_fn)
         /* GPB5 falling edge: exit without saving.
          * Entry wait ensures the button was released before loop started,
          * so this is always a deliberate new press. */
-        if (gpb_fell & (1u<<5)) { redraw_fn(); return false; }
+        if (gpb_fell & (1u<<5)) { discard_changes(); redraw_fn(); return false; }
 
         /* GPA1: execute action or toggle column */
         if (gpa_fell & (1u<<1)) {
             cal_item_t &it = g_cal_items[sel];
             if (!in_right) {
                 if (it.type == CI_ACT) {
-                    if (sel == 0) { redraw_fn(); return false; }
-                    if (sel == 1) {
+                    switch ((cal_act_t)it.def_val) {
+                    case ACT_EXIT:
+                        discard_changes();
+                        redraw_fn();
+                        return false;
+                    case ACT_SAVE_EXIT:
                         cal_i32_to_cal();   /* syncs beep, backlight, plim_enabled */
                         for (uint8_t i = 0; i < DAC_NUM_CH; i++)
                             g_cal.dac_cnt[i] = g_dac_cnt[i];
@@ -229,6 +246,15 @@ bool cal_menu_run(draw_static_fn_t redraw_fn)
                         flash_save();
                         redraw_fn();
                         return true;
+                    case ACT_AUTO_CAL:
+                        /* Wizard works on its own copy and saves itself;
+                         * unsaved menu edits are discarded first. */
+                        discard_changes();
+                        {
+                            bool saved = cal_wizard_run(dac);
+                            redraw_fn();
+                            return saved;
+                        }
                     }
                 } else {
                     uint8_t prev = sel;

@@ -1,4 +1,5 @@
 #include "display.h"
+#include "version.h"
 #include "psu_control.h"
 #include "peripherals.h"
 #include "st7735.h"
@@ -525,3 +526,27 @@ void msg_update(void)
 }
 
 void ir_overlay_update(void) { /* kept for link compat — functionality moved to msg_update */ }
+
+/* ── Splash screen ───────────────────────────────────────────────────── */
+static void splash_centered(uint8_t y, const char *s, uint16_t fg, uint8_t scale)
+{
+    int w = (int)strlen(s) * FONT_W * scale;
+    int x = ((int)st7735_width() - w) / 2;
+    if (x < 0) x = 0;
+    st7735_draw_string((uint8_t)x, y, s, fg, BG_COL, scale);
+}
+
+void draw_splash(void)
+{
+    char ver[16];
+    snprintf(ver, sizeof(ver), "FW v%s", FW_VERSION);
+
+    st7735_fill_screen(BG_COL);
+    /* The title does not fit on one line at scale 2 (160 px = 13 chars) */
+    splash_centered(8,  "LAB SUPPLY", HDR_COL, 2);
+    splash_centered(28, "2025/26",    HDR_COL, 2);
+    splash_centered(52, ver,          FG_COL,  1);
+    /* y = 66..~100 is left free for a QR code of the repository URL */
+    splash_centered(104, "github.com/Jed0vcela/",    DIS_COL, 1);
+    splash_centered(113, "LabSupply-2025-2026",      DIS_COL, 1);
+}

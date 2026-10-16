@@ -21,7 +21,7 @@ Kombinovaný zdroj a elektronická zátěž na společných výstupních svorká
 - **Elektronická zátěž** — nastavitelný proudový sink (Isink), souběžně se zdrojem
 - **Měřič kontinuity** — nastavitelný práh napětí, akustická signalizace
 - **Ochrana výkonu** — konfigurovatelné limity Pout a Psink, ochrana při poklesu Vin
-- **Kalibrace** — nastavení gain/offset pro každý měřený kanál, uložení do interní flash
+- **Kalibrace** — kalibrační průvodce (`Auto cal`) nebo ruční nastavení gain/offset, uložení do interní flash
 - **Ukládání nastavení** — hodnoty Vset, Iset a Isink se ukládají do flash
 - **IR dálkové ovládání** — NEC protokol, zatím není implementováno
 - **LCD displej** — barevný 160×128 px, tři zobrazovací režimy
@@ -32,7 +32,14 @@ Raspberry Pi Pico (RP2040) · MCP4728 DAC · MCP23S17 · ST7735S LCD · rotačn�
 
 ## Dokumentace
 
-Podrobný uživatelský manuál: [`manual_napajeci_zdroj.md`](manual_napajeci_zdroj.md)
+| Dokument | Obsah |
+|---|---|
+| [Uživatelský manuál](N%C3%A1vody,%20postupy/uzivatelsky_manual.md) | ovládání, režimy, menu, ochrany |
+| [Nahrání firmwaru](N%C3%A1vody,%20postupy/nahrani_firmwaru.md) | jak nahrát `.uf2`, vymazání flash |
+| [Kalibrace](N%C3%A1vody,%20postupy/kalibrace.md) | kalibrační průvodce a ruční kalibrace |
+| [Vývoj](N%C3%A1vody,%20postupy/vyvoj.md) | build, struktura kódu, vydání `.uf2` |
+
+Hotové programy: [`Kompilované programy/`](Kompilované%20programy/)
 
 <img width="4624" height="3472" alt="IMG_20260608_140253" src="https://github.com/user-attachments/assets/2df4201b-ee5e-44f5-9043-8d2f1a5b26d9" />
 

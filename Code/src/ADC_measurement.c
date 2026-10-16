@@ -8,7 +8,7 @@
  *   - Added adc_get_core_temp_mC() for RP2040 internal sensor
  */
 
-#include "adc_measurement.h"
+#include "ADC_measurement.h"
 #include "pico/stdlib.h"
 #include "hardware/adc.h"
 #include "hardware/gpio.h"

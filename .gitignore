@@ -1,0 +1,6 @@
+# Build artefakty
+Code/build/
+
+# KiCad zalohy
+KiCad soubory/**/*-backups/
+*-backups/

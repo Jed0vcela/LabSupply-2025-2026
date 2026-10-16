@@ -6,6 +6,9 @@
 
 #define DISPLAY_PERIOD_MS  100u
 
+/* ── Splash screen ───────────────────────────────────────────────────── */
+void draw_splash(void);
+
 /* ── field_t helpers ─────────────────────────────────────────────────── */
 bool update_field(field_t &f, const char *str);
 void field_invalidate(field_t &f);

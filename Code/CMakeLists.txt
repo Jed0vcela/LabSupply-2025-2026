@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.13)
 
-# Set PICO_SDK_PATH before running cmake:
+# Point to the Pico SDK either way:
+#   cmake .. -DPICO_SDK_PATH=/path/to/pico-sdk
 #   export PICO_SDK_PATH=/path/to/pico-sdk
-include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
+if (NOT PICO_SDK_PATH AND DEFINED ENV{PICO_SDK_PATH})
+    set(PICO_SDK_PATH $ENV{PICO_SDK_PATH})
+endif()
+include(${PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 
 project(lab_supply C CXX ASM)
 set(CMAKE_C_STANDARD   11)
@@ -11,19 +15,22 @@ set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
 add_executable(lab_supply
-    main.cpp
-    st7735.c
-    mcp23s17.c
-    mcp4728.cpp
-    ADC_measurement.c
-)
-target_sources(lab_supply PRIVATE
-    main.cpp display.cpp psu_control.cpp
-    peripherals.cpp cal_menu.cpp flash_store.cpp
+    src/main.cpp
+    src/display.cpp
+    src/psu_control.cpp
+    src/peripherals.cpp
+    src/cal_menu.cpp
+    src/cal_wizard.cpp
+    src/cal_fit.cpp
+    src/flash_store.cpp
+    src/mcp4728.cpp
+    src/st7735.c
+    src/mcp23s17.c
+    src/ADC_measurement.c
 )
 
 target_include_directories(lab_supply PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_link_libraries(lab_supply PRIVATE

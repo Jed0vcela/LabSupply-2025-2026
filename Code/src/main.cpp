@@ -25,7 +25,7 @@
 #include "display.h"
 #include "cal_menu.h"
 #include "mcp4728.h"
-#include "adc_measurement.h"
+#include "ADC_measurement.h"
 #include "mcp23s17.h"
 #include "st7735.h"
 #include <stdio.h>
@@ -137,6 +137,23 @@ static void process_buttons_continuity(uint8_t gpa, uint8_t gpb)
     gpa_prev = gpa; gpb_prev = gpb;
 }
 
+/* Splash timing: shown for SPLASH_MS, any button press cuts it short */
+#define SPLASH_MS  2500u
+
+static void splash_wait(void)
+{
+    uint8_t ga, gb;
+    mcp23s17_read_inputs(&ga, &gb);
+    const uint8_t ga0 = ga, gb0 = gb;   /* buttons held at power-up do not count */
+    const absolute_time_t end = make_timeout_time_ms(SPLASH_MS);
+    while (!time_reached(end)) {
+        sleep_ms(10);
+        mcp23s17_read_inputs(&ga, &gb);
+        if ((uint8_t)(ga0 & ~ga) || (uint8_t)(gb0 & ~gb)) break;   /* falling edge */
+    }
+    enc_consume();   /* a turn during the splash must not move a setpoint */
+}
+
 /* ── Main ─────────────────────────────────────────────────────────────── */
 int main(void)
 {
@@ -174,8 +191,10 @@ int main(void)
     st7735_init();
     st7735_set_rotation(3);
     backlight_set(g_cal.backlight);
+    draw_splash();
 
     mcp23s17_init();
+    splash_wait();
     mode_enter(MODE_SUPPLY_SINK);
 
     uint64_t last_display_us = 0;
@@ -227,7 +246,7 @@ int main(void)
 
         /* GPB5: enter cal menu */
         if (enter_cal) {
-            cal_menu_run(mode_redraw_static);
+            cal_menu_run(dac, mode_redraw_static);
             process_buttons_main_reset();
             backlight_set(g_cal.backlight);
             last_display_us = 0;
